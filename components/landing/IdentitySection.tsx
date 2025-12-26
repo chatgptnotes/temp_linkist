@@ -28,29 +28,31 @@ export default function IdentitySection() {
                     The NFC card isn't what you're buying. It's the trigger that moves a handshake into your Linkist PRM ecosystem in one tap.
                 </p>
 
-                {/* Card Layers Visual - Placeholder for specific Layers Image */}
+                {/* Card Layers Visual */}
                 <motion.div
                     initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="relative w-full max-w-2xl mx-auto aspect-[3/4] flex items-center justify-center"
+                    className="relative w-full max-w-xs mx-auto"
                 >
-                    {/* Red Glow Circle */}
-                    <div className="absolute inset-0 rounded-full border border-[#E02424]/30 bg-[#1a1a1a]/80" />
-
-                    {/* Card Layers Image */}
+                    {/* Card Layers Image - includes oval background */}
                     <img
-                        src="/card_layers_exploded.png"
+                        src="/coinzy-logo.png"
                         alt="NFC Card Layers"
-                        className="w-[100%] h-auto drop-shadow-2xl relative z-10"
+                        className="w-full h-auto drop-shadow-2xl"
                     />
-
-                    <div className="absolute bottom-[-100px] left-0 right-0 text-center">
-                        <p className="text-[#666] text-sm max-w-sm mx-auto">
-                            Once this limited run is over, this exact Black Founding Member card will not be issued again.
-                        </p>
-                    </div>
                 </motion.div>
+
+                {/* Bottom Text */}
+                <motion.p
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.3 }}
+                    className="text-[#666] text-sm max-w-sm mx-auto mt-12"
+                >
+                    Once this limited run is over, this exact Black Founding Member card will not be issued again.
+                </motion.p>
 
             </div>
         </section>

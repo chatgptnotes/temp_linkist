@@ -151,8 +151,13 @@ export async function POST(request: NextRequest) {
           .single();
         phoneFromRequest = originalRequest?.phone;
       }
+      // Fallback to invite code phone if not in request
+      if (!phoneFromRequest && inviteCode.phone) {
+        phoneFromRequest = inviteCode.phone;
+      }
 
       // Update existing user as founding member and activate (include phone if available)
+      // Always update phone_number if we have it from founders_requests (even if user already has one)
       const { data: updatedUser, error: updateUserError } = await supabase
         .from('users')
         .update({
@@ -160,8 +165,8 @@ export async function POST(request: NextRequest) {
           founding_member_since: new Date().toISOString(),
           founding_member_plan: 'lifetime',
           status: 'active', // Activate user
-          // Update phone_number if we have it from founders_requests and user doesn't have one
-          ...(phoneFromRequest && !existingUser.phone_number && { phone_number: phoneFromRequest })
+          // Always update phone_number if we have it from founders_requests
+          ...(phoneFromRequest && { phone_number: phoneFromRequest })
         })
         .eq('id', existingUser.id)
         .select()

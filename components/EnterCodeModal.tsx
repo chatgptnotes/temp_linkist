@@ -62,7 +62,8 @@ export default function EnterCodeModal({ isOpen, onClose, onSuccess }: EnterCode
             email: data.user.email,
             firstName: data.user.first_name,
             lastName: data.user.last_name,
-            phone: data.user.phone_number,
+            mobile: data.user.phone_number, // Use 'mobile' to match checkout page expectations
+            phone: data.user.phone_number,  // Keep 'phone' for backwards compatibility
             isFoundingMember: true
           }));
         }

@@ -274,8 +274,10 @@ export default function CheckoutPage() {
                 setValue('lastName', userProfile.lastName);
                 console.log('Checkout: Using profile lastName for shipping:', userProfile.lastName);
               }
-              if (userProfile.mobile) {
-                setValue('phone', userProfile.mobile);
+              // Check for mobile (preferred) or phone (fallback for Founders Club users)
+              if (userProfile.mobile || userProfile.phone) {
+                setValue('phone', userProfile.mobile || userProfile.phone);
+                console.log('Checkout: Using profile phone for shipping:', userProfile.mobile || userProfile.phone);
               }
               if (userProfile.country) {
                 // Map country name to country code if needed

@@ -188,7 +188,7 @@ function getEmailTemplate(name: string, code: string, expiresAt: Date): string {
         </p>
 
         <div style="text-align: center; margin: 0 0 30px;">
-          <a href="http://localhost:3000/product-selection" style="display: inline-block; background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: #ffffff; text-decoration: none; padding: 15px 40px; border-radius: 8px; font-weight: bold; font-size: 16px;">
+          <a href="https://temp-linkist.vercel.appl\/product-selection" style="display: inline-block; background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%); color: #ffffff; text-decoration: none; padding: 15px 40px; border-radius: 8px; font-weight: bold; font-size: 16px;">
             Unlock Founders Club & Customise Card
           </a>
         </div>
