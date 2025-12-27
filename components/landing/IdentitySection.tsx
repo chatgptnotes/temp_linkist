@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 export default function IdentitySection() {
     return (
-        <section className="relative py-32 bg-[#050505] overflow-hidden text-center">
+        <section className="relative py-16 bg-[#050505] overflow-hidden text-center">
             <div className="max-w-7xl mx-auto px-4 relative z-10">
 
                 {/* Badge */}
@@ -24,7 +24,7 @@ export default function IdentitySection() {
                     The Key to Your New Identity.
                 </motion.h2>
 
-                <p className="text-[#888] text-lg max-w-2xl mx-auto mb-20 leading-relaxed">
+                <p className="text-[#888] text-lg max-w-2xl mx-auto mb-12 leading-relaxed">
                     The NFC card isn't what you're buying. It's the trigger that moves a handshake into your Linkist PRM ecosystem in one tap.
                 </p>
 

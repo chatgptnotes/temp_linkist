@@ -13,7 +13,7 @@ export default function RealityCheckSection() {
                             initial={{ opacity: 0, scale: 0.9 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             viewport={{ once: true }}
-                            className="inline-block px-5 py-2 rounded-full border border-[#E02424]/30 bg-[#E02424]/10 text-[#E02424] text-sm font-semibold tracking-wider uppercase"
+                            className="inline-block px-4 py-1.5 rounded-full border border-[#8B2020] bg-[#1a0a0a] text-[#E02424] text-xs font-medium"
                         >
                             The Reality Check
                         </motion.div>
@@ -25,8 +25,7 @@ export default function RealityCheckSection() {
                             viewport={{ once: true }}
                             className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight"
                         >
-                            Your Brain isn't Built for{' '}
-                            <span className="md:block">5,000 Connections.</span>{' '}
+                            Your Brain isn't Built for 5,000 Connections.<br />
                             <span className="text-[#888]">Linkist is.</span>
                         </motion.h2>
 
@@ -41,15 +40,15 @@ export default function RealityCheckSection() {
                             </p>
 
                             <div className="pt-1 md:pt-2">
-                                <button className="px-6 md:px-7 py-2.5 rounded-full border border-[#E02424] text-[#E02424] text-base hover:bg-[#E02424] hover:text-white transition-all">
+                                <button className="px-6 py-2 rounded-full border-2 border-[#E02424] text-[#E02424] text-sm font-medium hover:bg-[#E02424] hover:text-white transition-all">
                                     Don't miss out !
                                 </button>
                             </div>
                         </div>
                     </div>
 
-                    {/* Image Column */}
-                    <div className="relative z-10 order-first md:order-last flex items-center justify-center md:justify-end">
+                    {/* Image Column - Hidden on mobile */}
+                    <div className="hidden md:flex relative z-10 order-first md:order-last items-center justify-center md:justify-end">
                         <motion.div
                             initial={{ opacity: 0, x: 50 }}
                             whileInView={{ opacity: 1, x: 0 }}

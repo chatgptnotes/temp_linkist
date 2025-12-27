@@ -18,11 +18,13 @@ export default function StatsSection() {
     ];
 
     return (
-        <section className="relative py-32 bg-[#050505] overflow-hidden">
+        <section className="relative py-32 bg-[#050505]">
             {/* Floating CTA matches image 6 */}
             <div className="absolute top-0 left-0 w-full flex justify-center -translate-y-1/2 z-20">
-                <Link href="/choose-plan" className="group flex items-center gap-3 px-8 py-3 bg-[#111] border border-[#333] rounded-full hover:border-[#E02424] transition-colors shadow-2xl">
-                    <img src="/logo_linkist.png" alt="Linkist" className="h-6 w-auto brightness-0 invert" style={{ filter: 'brightness(0) saturate(100%) invert(20%) sepia(93%) saturate(3078%) hue-rotate(349deg) brightness(88%) contrast(92%)' }} /> {/* Logo Filter for Red tint if needed, or use white */}
+                <Link href="/choose-plan" className="group flex items-center gap-2 px-6 py-3 bg-[#111] border border-[#333] rounded-full hover:border-[#E02424] transition-colors shadow-2xl">
+                    <svg className="w-5 h-5 text-[#E02424] flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                    </svg>
                     <span className="text-white font-medium tracking-wide text-sm">JOIN LINKIST</span>
                 </Link>
             </div>
