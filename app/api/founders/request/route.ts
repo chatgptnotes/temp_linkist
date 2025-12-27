@@ -31,7 +31,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Check for existing pending request with same email
-    const { data: existingRequest, error: checkError } = await supabase
+    const { data: existingRequest } = await supabase
       .from('founders_requests')
       .select('id, status')
       .eq('email', email.toLowerCase())
@@ -45,7 +45,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Check for existing approved request (already a member)
+    // Check for existing approved request
     const { data: approvedRequest } = await supabase
       .from('founders_requests')
       .select('id, status')
@@ -54,10 +54,38 @@ export async function POST(request: NextRequest) {
       .single();
 
     if (approvedRequest) {
-      return NextResponse.json(
-        { success: false, error: 'This email is already approved. Please check your email for the invite code.' },
-        { status: 400 }
-      );
+      // Check if user already activated (is a founding member)
+      const { data: member } = await supabase
+        .from('founding_members')
+        .select('id')
+        .eq('email', email.toLowerCase())
+        .single();
+
+      if (member) {
+        return NextResponse.json(
+          { success: false, error: 'You are already a Founders Club member.' },
+          { status: 400 }
+        );
+      }
+
+      // Check if their invite code has expired
+      const { data: inviteCode } = await supabase
+        .from('founders_invite_codes')
+        .select('id, expires_at, used_at')
+        .eq('request_id', approvedRequest.id)
+        .single();
+
+      if (inviteCode && !inviteCode.used_at) {
+        const expiresAt = new Date(inviteCode.expires_at);
+        if (expiresAt >= new Date()) {
+          // Code still valid
+          return NextResponse.json(
+            { success: false, error: 'You already have an active invite code. Please check your email.' },
+            { status: 400 }
+          );
+        }
+        // Code expired - allow new request (fall through)
+      }
     }
 
     // Insert new request
